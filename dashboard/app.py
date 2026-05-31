@@ -71,6 +71,7 @@ st.subheader("On-time rate by carrier")
 chart_df = carriers.set_index("carrier_name")[["on_time_rate"]].sort_values(
     "on_time_rate", ascending=False
 )
+chart_df["on_time_rate"] = pd.to_numeric(chart_df["on_time_rate"], errors="coerce")
 st.bar_chart(chart_df)
 
 st.subheader("Average arrival delay by carrier (minutes)")
