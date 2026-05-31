@@ -1,0 +1,12 @@
+.env
+profiles.yml
+__pycache__/
+*.pyc
+data/*.csv
+*.duckdb
+dbt/flightline/target/
+dbt/flightline/dbt_packages/
+dbt/flightline/logs/
+.venv/
+*.p8
+*.pub

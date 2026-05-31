@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: fct_flights
+    description: One row per flight leg with delay measures and an on-time flag.
+    columns:
+      - name: flight_key
+        tests: [not_null, unique]
+      - name: carrier_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_carrier')
+              field: carrier_code
+
+  - name: dim_carrier
+    columns:
+      - name: carrier_code
+        tests: [not_null, unique]
+
+  - name: agg_carrier_ontime
+    description: On-time rate and average delay per carrier.
+    columns:
+      - name: carrier_code
+        tests: [not_null, unique]
+      - name: on_time_rate
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+              inclusive: true
+
+  - name: agg_route_delay
+    columns:
+      - name: total_flights
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 30

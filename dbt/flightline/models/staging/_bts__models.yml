@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_bts__ontime
+    description: Cleaned, deduplicated one-row-per-flight staging layer over RAW BTS.
+    columns:
+      - name: flight_key
+        description: Surrogate key for a scheduled flight leg.
+        tests:
+          - not_null
+          - unique
+      - name: carrier_code
+        tests: [not_null]
+      - name: origin_airport
+        tests: [not_null]
+      - name: dest_airport
+        tests: [not_null]
+      - name: is_cancelled
+        tests:
+          - accepted_values:
+              values: [true, false]

@@ -1,0 +1,21 @@
+name: flightline
+version: "0.1.0"
+config-version: 2
+profile: flightline
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+models:
+  flightline:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  flightline:
+    +schema: seeds

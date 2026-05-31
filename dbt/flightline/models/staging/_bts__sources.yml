@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: RAW
+    tables:
+      - name: bts_ontime
+        description: >
+          Raw BTS Reporting Carrier On-Time Performance, one row per scheduled
+          flight, loaded monthly by the bts_batch DAG.
+        loaded_at_field: _LOADED_AT
+        freshness:
+          warn_after: {count: 40, period: day}
+          error_after: {count: 70, period: day}
+        columns:
+          - name: flightdate
+            tests: [not_null]
+          - name: reporting_airline
+            tests: [not_null]
