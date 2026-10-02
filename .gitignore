@@ -10,3 +10,7 @@ dbt/flightline/logs/
 .venv/
 *.p8
 *.pub
+
+# Local machine files
+.DS_Store
+dbt/flightline/.user.yml
