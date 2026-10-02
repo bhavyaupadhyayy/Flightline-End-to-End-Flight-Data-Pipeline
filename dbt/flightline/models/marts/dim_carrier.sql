@@ -9,5 +9,5 @@ lookup as (
 select
     f.carrier_code,
     coalesce(l.carrier_name, f.carrier_code) as carrier_name
-from flights f
-left join lookup l on f.carrier_code = l.carrier_code
+from flights as f
+left join lookup as l on f.carrier_code = l.carrier_code
