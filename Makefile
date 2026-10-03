@@ -24,5 +24,6 @@ dashboard:     ## Run the Streamlit dashboard
 sample:        ## Generate one month of synthetic BTS data locally
 	FLIGHTLINE_SAMPLE=1 python -m ingestion.bts_extract
 
-test:          ## Compile-check Python
-	python -m compileall ingestion dashboard airflow/dags
+test:          ## Compile-check Python and run the unit tests
+	python -m compileall -q ingestion dashboard airflow/dags
+	python -m pytest -q tests
