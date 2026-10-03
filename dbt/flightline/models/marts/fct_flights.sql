@@ -23,10 +23,10 @@ select
         when is_cancelled or is_diverted then null
         when arr_delay_min < 15 then true
         else false
-    end as is_on_time,
-    coalesce(carrier_delay_min, 0)        as carrier_delay_min,
-    coalesce(weather_delay_min, 0)        as weather_delay_min,
-    coalesce(nas_delay_min, 0)            as nas_delay_min,
-    coalesce(security_delay_min, 0)       as security_delay_min,
-    coalesce(late_aircraft_delay_min, 0)  as late_aircraft_delay_min
+    end                                  as is_on_time,
+    coalesce(carrier_delay_min, 0)       as carrier_delay_min,
+    coalesce(weather_delay_min, 0)       as weather_delay_min,
+    coalesce(nas_delay_min, 0)           as nas_delay_min,
+    coalesce(security_delay_min, 0)      as security_delay_min,
+    coalesce(late_aircraft_delay_min, 0) as late_aircraft_delay_min
 from flights

@@ -10,3 +10,14 @@ indented_using_on = true
 
 [sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = lower
+
+# Column aliases are deliberately aligned for readability.
+[sqlfluff:layout:type:alias_expression]
+spacing_before = align
+align_within = select_clause
+align_scope = bracketed
+
+# Lint renders models with the plain jinja templater (no warehouse connection),
+# so dbt package macros used in models need lightweight stand-ins.
+[sqlfluff:templater:jinja]
+library_path = sqlfluff_libs

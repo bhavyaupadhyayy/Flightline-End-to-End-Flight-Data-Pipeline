@@ -15,7 +15,7 @@ jobs:
           python-version: "3.11"
       - run: pip install sqlfluff==3.* dbt-snowflake==1.8.*
       - name: Lint SQL (no warehouse needed, templater renders locally)
-        run: sqlfluff lint dbt/flightline/models --dialect snowflake || true
+        run: sqlfluff lint dbt/flightline/models
       - name: Compile-check Python
         run: |
           pip install -r requirements.txt

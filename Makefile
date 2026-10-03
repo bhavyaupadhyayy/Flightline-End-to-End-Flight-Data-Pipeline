@@ -16,7 +16,7 @@ dbt-test:
 	cd dbt/flightline && dbt test --profiles-dir . --target prod
 
 lint:
-	sqlfluff lint dbt/flightline/models --dialect snowflake
+	sqlfluff lint dbt/flightline/models
 
 dashboard:     ## Run the Streamlit dashboard
 	streamlit run dashboard/app.py
